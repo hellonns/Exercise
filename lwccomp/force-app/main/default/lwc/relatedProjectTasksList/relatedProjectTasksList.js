@@ -123,7 +123,7 @@ export default class RelatedProjectTasksList extends LightningElement {
 
             this.tasks = result;
         } catch (error) {
-            this.error = error;
+            this.error = this.formatError(error);
         }
     }
 }
