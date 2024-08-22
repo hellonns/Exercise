@@ -1,0 +1,39 @@
+<template>
+    <template if:true={tableview}>
+    <lightning-card title={LabelText} icon-name="utility:task">
+        <template if:true={tasks}>
+            <div class="slds-p-around_medium">
+                <p>Total Records: ({count})</p>
+                <lightning-datatable
+                    key-field="Id"
+                    data={tasks}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </div>
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error">{error}</div>
+        </template>
+    </lightning-card>
+    </template>
+
+    <template if:false={tableview}>
+        <lightning-card  variant="Narrow"  title={LabelText} icon-name="standard:connected_apps">
+            <template if:true={tasks}>
+                <template for:each={tasks} for:item="task" >
+                    <div  key={task.Id} class="slds-grid slds-wrap border">
+                        <template for:each={task.fields} for:item="field">
+                            <div  key={field.fieldPath} class="slds-col slds-size_1-of-2 slds-p-around_small">
+                                <p class="slds-p-horizontal_small"><strong>{field.fieldPath}:</strong> {field.data}</p>
+                            </div>
+                        </template>
+                    </div>
+                </template> 
+            </template>
+            <template if:true={error}>
+                <div class="slds-text-color_error">{error}</div>
+            </template>
+        </lightning-card>
+    </template>
+</template>

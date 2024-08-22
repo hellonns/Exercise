@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>Project__c</object> <!-- Project object -->
+            </objects>
+            <property name="recordId" type="String" />
+            <property name="childObjectApiName" type="String" default="Project_Task__c"/>
+            <property name="relationshipFieldName" type="String" />
+            <property name="fieldSetName" type="String" />
+            <property name="LabelText" type="String" default="Related Tasks"/>
+            <property name="showas" type="String" default="Card"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
